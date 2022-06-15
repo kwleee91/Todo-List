@@ -1,5 +1,5 @@
 import { atom, selector } from "recoil";
-import ToDo from "./components/ToDo";
+import { recoilPersist } from "recoil-persist";
 
 export interface IToDo {
   text: string;
@@ -12,21 +12,25 @@ export const categoryState = atom({
   default: "TO_DO",
 });
 
+const { persistAtom } = recoilPersist({
+  key: "toDoStorage",
+  storage: localStorage,
+});
+
 export const toDoState = atom<IToDo[]>({
   key: "toDo",
   default: [],
+  effects_UNSTABLE: [persistAtom],
 });
 
 export const toDoSelector = selector({
   key: "toDoSelector",
   get: ({ get }) => {
     const toDos = get(toDoState);
-    const category = get(categoryState);
-    if (category === "TO_DO")
-      return toDos.filter((toDo) => toDo.category === "TO_DO");
-    if (category === "DOING")
-      return toDos.filter((toDo) => toDo.category === "DOING");
-    if (category === "DONE")
-      return toDos.filter((toDo) => toDo.category === "DONE");
+
+    return [
+      toDos.filter((toDo) => toDo.category === "TO_DO"),
+      toDos.filter((toDo) => toDo.category === "DONE"),
+    ];
   },
 });

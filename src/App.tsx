@@ -3,7 +3,7 @@ import ToDoList from "./components/ToDoList";
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Source+Sans+Pro:ital,wght@0,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;700&family=Open+Sans&family=Source+Sans+Pro:ital,wght@0,300;1,400&display=swap');
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -32,9 +32,9 @@ footer, header, hgroup, menu, nav, section {
 body {
 	font-weight: 300;
 	line-height: 1.2;
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: 'Baloo Da 2', cursive;
 }
-ol, ul {
+ol, ul, li {
 	list-style: none;
 }
 blockquote, q {
@@ -56,6 +56,11 @@ table {
 a {
   text-decoration: none;
   color: inherit;
+}
+button {
+	border: none;
+	background-color: transparent;
+	font-family: 'Baloo Da 2', cursive;
 }
 `;
 
